@@ -4,3 +4,4 @@
 - TypeScript
 - Tailwind
 - Pug
+- supabase
