@@ -11,12 +11,12 @@ const config = {
 		vitePreprocess(),
 		preprocess({
 			postcss: true,
-			defaults: {
-				style: 'postcss'
-			}
 		})
 	],
-
+	compilerOptions: {
+		// enable run-time checks when not in production
+		dev: !process.env.SVELTEKIT_PRODUCTION
+	},
 	kit: {
 		adapter: adapter()
 	}
