@@ -81,30 +81,25 @@
   }
 </script>
 
-<form class="form-widget" on:submit|preventDefault={updateProfile}>
-  <div>
-    <label for="email">Email</label>
-    <input id="email" type="text" value={session.user.email} disabled />
-  </div>
-  <div>
-    <label for="username">Name</label>
-    <input id="username" type="text" bind:value={username} />
-  </div>
-  <div>
-    <label for="website">Website</label>
-    <input id="website" type="website" bind:value={website} />
-  </div>
+<template lang="pug">
+  form.form-widget(on:submit!="{() => updateProfile()}")
+    div
+      label(for="email") Email
+      input#email(type="text", value="{session.user.email}", disabled)
+    div
+      label(for="username") Name
+      input#username(type="text", bind:value="{username}")
+    div
+      label(for="website") Website
+      input#website(type="website", bind:value="{website}")
 
-  <div>
-    <input
-      type="submit"
-      class="button block primary"
-      value={loading ? 'Loading...' : 'Update'}
-      disabled={loading}
-    />
-  </div>
-
-  <div>
-    <button class="button block" on:click={signOut} disabled={loading}>Sign Out</button>
-  </div>
-</form>
+    div
+      input(
+        type="submit"
+        class="button block primary"
+        value=loading ? 'Loading...' : 'Update'
+        disabled="{loading}"
+      )
+    div
+      button.button.block(on:click!="{() => signOut()}", disabled=loading) Sign Out
+</template>
